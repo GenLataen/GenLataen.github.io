@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>单片机中常见的通信协议 - 微思——MicroMuse</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="微思——MicroMuse"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="微思——MicroMuse"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="在单片机应用中，通信协议是不可缺少的一部分，上位机与下位机、单片机与单片机、单片机与外设模块之间的通信都需要通信协议来实现信息交换和资源共享。由于设备之间的传输速率、电气特性、可靠性要求等不同，也产生了很多适用于不同情况的通信协议，并被广泛接受和使用。其实最经常使用的有以下几种： USRT和USART分别称为通用异步收发器和通用同步异步收发器。速度不快，可以全双工。结构一般由波特率速率生成器、UA"><meta property="og:type" content="blog"><meta property="og:title" content="单片机中常见的通信协议"><meta property="og:url" content="https://genlataen.github.io/2024/12/23/%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/"><meta property="og:site_name" content="微思——MicroMuse"><meta property="og:description" content="在单片机应用中，通信协议是不可缺少的一部分，上位机与下位机、单片机与单片机、单片机与外设模块之间的通信都需要通信协议来实现信息交换和资源共享。由于设备之间的传输速率、电气特性、可靠性要求等不同，也产生了很多适用于不同情况的通信协议，并被广泛接受和使用。其实最经常使用的有以下几种： USRT和USART分别称为通用异步收发器和通用同步异步收发器。速度不快，可以全双工。结构一般由波特率速率生成器、UA"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://s2.loli.net/2024/12/24/HLYQxeiPnsvXIoT.png"><meta property="og:image" content="https://s2.loli.net/2024/12/24/qfd921vNUwyFLKA.png"><meta property="og:image" content="https://s2.loli.net/2024/12/24/Qwm3YhqaUsvjrZT.png"><meta property="og:image" content="https://s2.loli.net/2024/12/24/9niEKXBFlxAYMJH.png"><meta property="og:image" content="https://s2.loli.net/2024/12/24/vYsxwDmkVApebWE.png"><meta property="article:published_time" content="2024-12-23T13:18:25.634Z"><meta property="article:modified_time" content="2024-12-24T03:00:42.530Z"><meta property="article:author" content="Shi Junduo"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://s2.loli.net/2024/12/24/HLYQxeiPnsvXIoT.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://genlataen.github.io/2024/12/23/%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/"},"headline":"单片机中常见的通信协议","image":["https://s2.loli.net/2024/12/24/HLYQxeiPnsvXIoT.png","https://s2.loli.net/2024/12/24/qfd921vNUwyFLKA.png","https://s2.loli.net/2024/12/24/Qwm3YhqaUsvjrZT.png","https://s2.loli.net/2024/12/24/9niEKXBFlxAYMJH.png","https://s2.loli.net/2024/12/24/vYsxwDmkVApebWE.png"],"datePublished":"2024-12-23T13:18:25.634Z","dateModified":"2024-12-24T03:00:42.530Z","author":{"@type":"Person","name":"Shi Junduo"},"publisher":{"@type":"Organization","name":"微思——MicroMuse","logo":{"@type":"ImageObject","url":"https://s2.loli.net/2024/12/17/idElDZTg2bU1JLB.png"}},"description":"在单片机应用中，通信协议是不可缺少的一部分，上位机与下位机、单片机与单片机、单片机与外设模块之间的通信都需要通信协议来实现信息交换和资源共享。由于设备之间的传输速率、电气特性、可靠性要求等不同，也产生了很多适用于不同情况的通信协议，并被广泛接受和使用。其实最经常使用的有以下几种： USRT和USART分别称为通用异步收发器和通用同步异步收发器。速度不快，可以全双工。结构一般由波特率速率生成器、UA"}</script><link rel="canonical" href="https://genlataen.github.io/2024/12/23/%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link data-pjax rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="https://s2.loli.net/2024/12/17/idElDZTg2bU1JLB.png" alt="微思——MicroMuse" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/GenLataen?tab=repositories"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2024-12-23T13:18:25.634Z" title="2024/12/23 21:18:25">2024-12-23</time>发表</span><span class="level-item"><time dateTime="2024-12-24T03:00:42.530Z" title="2024/12/24 11:00:42">2024-12-24</time>更新</span><span class="level-item">4 分钟读完 (大约581个字)</span></div></div><h1 class="title is-3 is-size-4-mobile">单片机中常见的通信协议</h1><div class="content"><p>在单片机应用中，通信协议是不可缺少的一部分，上位机与下位机、单片机与单片机、单片机与外设模块之间的通信都需要通信协议来实现信息交换和资源共享。由于设备之间的传输速率、电气特性、可靠性要求等不同，也产生了很多适用于不同情况的通信协议，并被广泛接受和使用。其实最经常使用的有以下几种：</p>
+<h5 id="USRT和USART"><a href="#USRT和USART" class="headerlink" title="USRT和USART"></a><strong>USRT和USART</strong></h5><p>分别称为通用异步收发器和通用同步异步收发器。速度不快，可以全双工。结构一般由波特率速率生成器、UART&#x2F;USART发送器，UART&#x2F;USART接收器组成。硬件方面有两条线组成，一条挨着一条</p>
+<p><img src="https://s2.loli.net/2024/12/24/HLYQxeiPnsvXIoT.png" alt="UART"></p>
+<h5 id="I2C"><a href="#I2C" class="headerlink" title="I2C"></a><strong>I2C</strong></h5><p>双向、双线、串行、多主接口标准。速度不快，半双工，同步接口，具有总线仲裁机制，非常适合设备间短距离频繁数据通讯，可实现设备联网。</p>
+<p>总线仲裁：线与，谁发送0谁就仲裁成功</p>
+<img src="https://s2.loli.net/2024/12/24/qfd921vNUwyFLKA.png" alt="I2C" style="zoom:80%;" />
+
+<h5 id="SPI"><a href="#SPI" class="headerlink" title="SPI"></a><strong>SPI</strong></h5><p>高速同步串口、高速、全双工、独立收发、同步接口，可实现多个SPI设备的互联，硬件3~4条线；也是所有基于SPI的设备所共有的，他们分别是SDI(数据输入)、SDO(数据输出)、SCK(时钟)、CS(片选)</p>
+<img src="https://s2.loli.net/2024/12/24/Qwm3YhqaUsvjrZT.png" alt="SPI" style="zoom: 67%;" />
+
+<h5 id="CAN"><a href="#CAN" class="headerlink" title="CAN"></a><strong>CAN</strong></h5><p>采用两线传输，两根线分别作为CAN_H和CAN_L,接线端子处有120欧电阻。当CAN收发器接收到总线信号时，先将信号电平转换成逻辑状态，即CAN_H与CAN_L电平相减后，得到一个内插电平。各种扰动对两条线的影响是一样的，而相减后的内插电平可以滤除这些扰动。</p>
+<img src="https://s2.loli.net/2024/12/24/9niEKXBFlxAYMJH.png" alt="CAN" style="zoom:50%;" />
+
+<h5 id="RS-485"><a href="#RS-485" class="headerlink" title="RS-485"></a><strong>RS-485</strong></h5><p>在要求通信距离为几十米到上千米时，广泛采用RS-485串行总线标准。RS-485采用平衡发送和差分接收，因此具有抑制共模干扰的能力。</p>
+<p>RS232串口可以使用芯片转换电平来实现互转。</p>
+<img src="https://s2.loli.net/2024/12/24/vYsxwDmkVApebWE.png" alt="RS-485" style="zoom: 50%;" /></div><div class="article-licensing box"><div class="licensing-title"><p>单片机中常见的通信协议</p><p><a href="https://genlataen.github.io/2024/12/23/单片机中常见的通信协议/">https://genlataen.github.io/2024/12/23/单片机中常见的通信协议/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Shi Junduo</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2024-12-23</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2024-12-24</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2024/12/16/C%E8%AF%AD%E8%A8%80%E4%B8%AD%E9%9D%99%E6%80%81%E3%80%81%E5%8A%A8%E6%80%81%E5%B1%9E%E6%80%A7/"><span class="level-item">C语言中静态、动态属性</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card" id="comments"><div class="card-content"><h3 class="title is-5">评论</h3><div class="content" id="valine-thread"></div><script src="//cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine@1.4.16/dist/Valine.min.js"></script><script>new Valine({
+            el: '#valine-thread',
+            appId: "qYVs82cCehC25EqJKmUfrDc1-gzGzoHsz",
+            appKey: "G6e9jF8sdMbvx0YsonKa85M9",
+            
+            avatar: "mm",
+            avatarForce: true,
+            meta: ["nick","mail","link"],
+            pageSize: 10,
+            lang: "zh-CN",
+            visitor: true,
+            highlight: true,
+            recordIP: false,
+            
+            
+            
+            enableQQ: true,
+            requiredFields: [],
+        });</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1 is-sticky"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="https://s2.loli.net/2024/12/17/wJqQVBpXEdjK8S1.jpg" alt="Shi Junduo"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Shi Junduo</p><p class="is-size-6 is-block">Embedded Engineer</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Shanghai, China</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">文章</p><a href="/archives/"><p class="title">2</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">分类</p><a href="/categories/"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">标签</p><a href="/tags/"><p class="title">0</p></a></div></div></nav><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="me noopener" title="Github" href="https://github.com/GenLataen?tab=repositories"><i class="fab fa-github"></i></a></div></div></div><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-12-23T13:18:25.634Z">2024-12-23</time></p><p class="title"><a href="/2024/12/23/%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/">单片机中常见的通信协议</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2024-12-16T02:07:46.352Z">2024-12-16</time></p><p class="title"><a href="/2024/12/16/C%E8%AF%AD%E8%A8%80%E4%B8%AD%E9%9D%99%E6%80%81%E3%80%81%E5%8A%A8%E6%80%81%E5%B1%9E%E6%80%A7/">C语言中静态、动态属性</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">归档</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2024/12/"><span class="level-start"><span class="level-item">十二月 2024</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></div></div></div><!--!--><div class="column-right-shadow is-hidden-widescreen"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#USRT和USART"><span class="level-left"><span class="level-item">1</span><span class="level-item">USRT和USART</span></span></a></li><li><a class="level is-mobile" href="#I2C"><span class="level-left"><span class="level-item">2</span><span class="level-item">I2C</span></span></a></li><li><a class="level is-mobile" href="#SPI"><span class="level-left"><span class="level-item">3</span><span class="level-item">SPI</span></span></a></li><li><a class="level is-mobile" href="#CAN"><span class="level-left"><span class="level-item">4</span><span class="level-item">CAN</span></span></a></li><li><a class="level is-mobile" href="#RS-485"><span class="level-left"><span class="level-item">5</span><span class="level-item">RS-485</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="https://s2.loli.net/2024/12/17/idElDZTg2bU1JLB.png" alt="微思——MicroMuse" height="28"></a><p class="is-size-7"><span>&copy; 2024 Shi Junduo</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p><p class="is-size-7">© 2024</p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/GenLataen?tab=repositories"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'folded'
+                }
+            }
+        };</script><script data-pjax src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      chtml: {
+        matchFontHeight: false
+      }
+    };</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script src="/js/pjax.js"></script><!--!--><!--!--><!--!--><script data-pjax src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script data-pjax src="/js/insight.js" defer></script><script data-pjax>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>

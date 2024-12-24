@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>单片机中常见的通信协议</title>
+      <link href="/2024/12/23/%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/"/>
+      <url>/2024/12/23/%E5%8D%95%E7%89%87%E6%9C%BA%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/</url>
+      
+        <content type="html"><![CDATA[<p>在单片机应用中，通信协议是不可缺少的一部分，上位机与下位机、单片机与单片机、单片机与外设模块之间的通信都需要通信协议来实现信息交换和资源共享。由于设备之间的传输速率、电气特性、可靠性要求等不同，也产生了很多适用于不同情况的通信协议，并被广泛接受和使用。其实最经常使用的有以下几种：</p><h5 id="USRT和USART"><a href="#USRT和USART" class="headerlink" title="USRT和USART"></a><strong>USRT和USART</strong></h5><p>分别称为通用异步收发器和通用同步异步收发器。速度不快，可以全双工。结构一般由波特率速率生成器、UART&#x2F;USART发送器，UART&#x2F;USART接收器组成。硬件方面有两条线组成，一条挨着一条</p><p><img src="https://s2.loli.net/2024/12/24/HLYQxeiPnsvXIoT.png" alt="UART"></p><h5 id="I2C"><a href="#I2C" class="headerlink" title="I2C"></a><strong>I2C</strong></h5><p>双向、双线、串行、多主接口标准。速度不快，半双工，同步接口，具有总线仲裁机制，非常适合设备间短距离频繁数据通讯，可实现设备联网。</p><p>总线仲裁：线与，谁发送0谁就仲裁成功</p><img src="https://s2.loli.net/2024/12/24/qfd921vNUwyFLKA.png" alt="I2C" style="zoom:80%;" /><h5 id="SPI"><a href="#SPI" class="headerlink" title="SPI"></a><strong>SPI</strong></h5><p>高速同步串口、高速、全双工、独立收发、同步接口，可实现多个SPI设备的互联，硬件3~4条线；也是所有基于SPI的设备所共有的，他们分别是SDI(数据输入)、SDO(数据输出)、SCK(时钟)、CS(片选)</p><img src="https://s2.loli.net/2024/12/24/Qwm3YhqaUsvjrZT.png" alt="SPI" style="zoom: 67%;" /><h5 id="CAN"><a href="#CAN" class="headerlink" title="CAN"></a><strong>CAN</strong></h5><p>采用两线传输，两根线分别作为CAN_H和CAN_L,接线端子处有120欧电阻。当CAN收发器接收到总线信号时，先将信号电平转换成逻辑状态，即CAN_H与CAN_L电平相减后，得到一个内插电平。各种扰动对两条线的影响是一样的，而相减后的内插电平可以滤除这些扰动。</p><img src="https://s2.loli.net/2024/12/24/9niEKXBFlxAYMJH.png" alt="CAN" style="zoom:50%;" /><h5 id="RS-485"><a href="#RS-485" class="headerlink" title="RS-485"></a><strong>RS-485</strong></h5><p>在要求通信距离为几十米到上千米时，广泛采用RS-485串行总线标准。RS-485采用平衡发送和差分接收，因此具有抑制共模干扰的能力。</p><p>RS232串口可以使用芯片转换电平来实现互转。</p><img src="https://s2.loli.net/2024/12/24/vYsxwDmkVApebWE.png" alt="RS-485" style="zoom: 50%;" />]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>C语言中静态、动态属性</title>
       <link href="/2024/12/16/C%E8%AF%AD%E8%A8%80%E4%B8%AD%E9%9D%99%E6%80%81%E3%80%81%E5%8A%A8%E6%80%81%E5%B1%9E%E6%80%A7/"/>
       <url>/2024/12/16/C%E8%AF%AD%E8%A8%80%E4%B8%AD%E9%9D%99%E6%80%81%E3%80%81%E5%8A%A8%E6%80%81%E5%B1%9E%E6%80%A7/</url>
