@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>MDK程序组成、存储与运行</title>
+      <link href="/2025/01/06/MDK%E7%9A%84%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/"/>
+      <url>/2025/01/06/MDK%E7%9A%84%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<h4 id="MDK程序的编译过程"><a href="#MDK程序的编译过程" class="headerlink" title="MDK程序的编译过程"></a><strong>MDK程序的编译过程</strong></h4><hr><p>MDK程序从C&#x2F;C++代码、汇编代码到二进制文件经历一下几个步骤：</p><p><img src="https://s2.loli.net/2025/01/06/SOpPUYnzAZJWqbH.png" alt="MDK编译过程"></p><p>经过编译器处理得到了<code>.o</code>对象代码，然后使用链接器链接得到了<code>.axf</code>映像文件，这时在映像文件中给变量分配好了地址。得到<code>.axf</code>文件后，只需要通过<code>fromelf</code>格式转换便可得到最终写入到flash中的程序了</p><h4 id="MDK程序的存储与运行"><a href="#MDK程序的存储与运行" class="headerlink" title="MDK程序的存储与运行"></a><strong>MDK程序的存储与运行</strong></h4><hr><p>单片机程序考虑加载（Loading）和执行(Executing)两种状态，下图为两种状态下数据存储情况</p><p><img src="https://s2.loli.net/2025/01/06/RxPzlk3gXNeDOrM.png" alt="程序加载、运行视图"></p><p>在这之前先介绍下MDK的数据区域类型：</p><p><code>CODE:</code>代码域，存放在ROM</p><p><code>RO-Data:</code>常量</p><p><code>RW-Data:</code>初始值非零的全局变量</p><p><code>ZI-Data、堆栈空间</code>：初始值为零的全局变量、局部变量、使用malloc动态分配的变量</p><p>在<strong>程序加载</strong>阶段，数据存放在只读区域(RO section)、只写区域(RW section)两块区域，由上图可知，数据（Code、RO data和RW data）都存放在这两块区域中，都存放在ROM中</p><p>在<strong>程序运行</strong>阶段，在RW section中的数据赋值到SRAM中，另外SRAM中还包括初始化为零的ZI data,RO section的数据仍然保留在ROM中</p><p><img src="https://s2.loli.net/2025/01/06/MVz2gownk9OZNC5.png" alt="不同区域存放的数据类型"></p><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h4><hr><p>理解MDK程序的编译、运行过程有助于理解程序运行的本质，是实现程序裁剪的基础，同时对后续Linux的学习也有一定的帮助。</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>freeRTOS中Task学习笔记</title>
       <link href="/2025/01/06/freeRTOS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
       <url>/2025/01/06/freeRTOS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
